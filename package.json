@@ -1,11 +1,13 @@
 {
+  "type": "module",
   "name": "cs340-group-58-project",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+    "development": "npx nodemon app.js",
+    "production": "npx forever start app.js",
+    "stop_production": "npx forever stop app.js"  },
   "keywords": [],
   "author": "",
   "license": "ISC",
