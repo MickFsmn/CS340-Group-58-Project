@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{{title}}</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<body>
+    <h1>Our Pages:</h1>
+
+
+    <h2><a href="/">Home</a></h2>
+    <table>
+        <tr>
+            <th>View Database Entries</th>
+            <th>Add New Entries</th>
+            <th>Update Existing Entries</th>
+        </tr>
+
+        <tr>
+            <td><a href="/birds">View Birds</a></td>
+            <td><a href="/birds_new">Add Bird</a></td>
+            <td><a href="/birds_update">Update Birds</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/species">View Species</a></td>
+            <td><a href="/species_new">Add Species</a></td>
+            <td><a href="/species_update">Update Species</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/owners">View Owners</a></td>
+            <td><a href="/owners_new">Add Owner</a></td>
+            <td><a href="/owners_update">Update Owners</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/feeds">View Feeds</a></td>
+            <td><a href="/feeds_new">Add Feed</a></td>
+            <td><a href="/feeds_update">Update Feeds</a></td>
+        </tr>
+
+        <tr>
+            <td><a href="/feeding_logs">View Feeding Logs</a></td>
+            <td><a href="/feeding_logs_new">Add Feeding Log Entry</a></td>
+            <td><a href="/feeding_logs_update">Update Feeding Log Entry</a></td>
+        </tr>
+    </table>
+
+    {{{body}}}
+</body>
+
+</html>

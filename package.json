@@ -1,0 +1,20 @@
+{
+  "name": "cs340-group-58-project",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.2.3",
+    "express": "^5.1.0",
+    "express-handlebars": "^8.0.3",
+    "forever": "^4.0.3",
+    "mysql2": "^3.15.3",
+    "nodemon": "^3.1.10"
+  }
+}

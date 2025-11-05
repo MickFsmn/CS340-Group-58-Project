@@ -1,0 +1,34 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h1>View Species</h1>
+<table>
+    <tr>
+        <th>species_id</th>
+        <th>common_name</th>
+        <th>scientific_name</th>
+        <th>diet_type</th>
+    </tr>
+    {{#each species}}
+    <tr>
+        <td>{{this.species_id}}</td>
+        <td>{{this.common_name}}</td>
+        <td>{{this.scientific_name}}</td>
+        <td>{{this.diet_type}}</td>
+    </tr>
+    {{/each}}
+</table>

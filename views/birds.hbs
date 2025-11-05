@@ -1,0 +1,48 @@
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+<h1>View Birds</h1>
+<table>
+    <tr>
+        <th>bird_id</th>
+        <th>name</th>
+        <th>species_id</th>
+        <th>owner_id</th>
+        <th>date_of_birth</th>
+        <th>sex</th>
+        <th>admission_date</th>
+        <th>current_status</th>
+        <th>reason_for_admission</th>
+        <th>cage_id</th>
+        <th>notes</th>
+    </tr>
+    {{#each birds}}
+    <tr>
+        <td>{{this.bird_id}}</td>
+        <td>{{this.name}}</td>
+        <td>{{this.species_id}}</td>
+        <td>{{this.owner_id}}</td>
+        <td>{{this.date_of_birth}}</td>
+        <td>{{this.sex}}</td>
+        <td>{{this.admission_date}}</td>
+        <td>{{this.current_status}}</td>
+        <td>{{this.reason_for_admission}}</td>
+        <td>{{this.cage_id}}</td>
+        <td>{{this.notes}}</td>
+    </tr>
+    {{/each}}
+</table>

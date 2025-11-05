@@ -1,0 +1,47 @@
+# Node modules
+/node_modules/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+logs/
+*.log
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# OS-specific files
+.DS_Store
+Thumbs.db
+
+# Build / cache files
+/dist/
+.build/
+.cache/
+.tmp/
+coverage/
+
+# IDE / editor files
+.vscode/
+.idea/
+*.swp
+
+# Runtime files
+*.pid
+*.seed
+*.pid.lock
+
+# Optional: if using SQLite or other local DBs
+*.sqlite
+*.sqlite3
+
+# If using macOS/Linux shell scripts for dev
+*.sh~
+
+# Optional: Electron or front-end build folders
+/public/bundle.js
+/public/bundle.js.map
