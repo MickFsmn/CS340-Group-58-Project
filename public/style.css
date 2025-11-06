@@ -1,0 +1,41 @@
+/*testing*/
+html, body {
+    font-family: "Funnel Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400;
+    font-style: normal;
+    margin: 0;
+    padding: 0;
+    height:100%;
+}
+
+html {
+    background-color: #132A13;
+}
+
+body {
+    background-color: #F2F7BD;
+    min-height: 100vh;
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+table.home-table {
+    font-family: "Funnel Sans", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 350;
+    font-style: normal;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+.home-table td,
+.home-table th {
+    border: 2px solid #4F772D;
+    text-align: left;
+    padding: 8px;
+}
+
+.home-table tr:nth-child(even) {
+    background-color: #90A955;
+}
