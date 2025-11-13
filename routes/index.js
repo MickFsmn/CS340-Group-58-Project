@@ -3,8 +3,27 @@ import { db } from "../db.js";
 const router = express.Router();
 
 router.get("/", (req, res) => res.render("home", { title: "Home" }));
-router.get("/birds", (req, res) => res.render("birds", { title: "View Birds" }));
-router.get("/birds_new", (req, res) => res.render("birds_new", { title: "Add Bird" }));
+
+router.get("/birds", async (req, res) => {
+  try {
+    const [rows] = await db.execute("SELECT * FROM Birds");
+    res.render("birds", { title: "View Birds", birds: rows });
+  } catch (err) {
+    console.error("Error loading birds:", err);
+    res.status(500).send("Error loading birds");
+  }
+});
+
+router.get("/species", async (req, res) => {
+  try {
+    const [rows] = await db.execute("SELECT * FROM Species");
+    res.render("species", { title: "View Species", species: rows });
+  } catch (err) {
+    console.error("Error loading species:", err);
+    res.status(500).send("Error loading species");
+  }
+});
+
 router.get("/birds_update", (req, res) => res.render("birds_update", { title: "Update Birds" }));
 router.get("/species", (req, res) => res.render("species", { title: "View Species" }));
 router.get("/species_new", (req, res) => res.render("species_new", { title: "Add Species" }));
@@ -18,6 +37,18 @@ router.get("/feeding_logs_update", (req, res) => res.render("feeding_logs_update
 router.get("/owners", (req, res) => res.render("owners", { title: "View Owners" }));
 router.get("/owners_new", (req, res) => res.render("owners_new", { title: "Add Owner" }));
 router.get("/owners_update", (req, res) => res.render("owners_update", { title: "Update Owners" }));
+
+
+router.get("/birds_new", async (req, res) => {
+  try {
+    const [speciesRows] = await db.execute("SELECT * FROM Species");
+    const [ownerRows] = await db.execute("SELECT * FROM Owners");
+    res.render("birds_new", { title: "Add Bird", species: speciesRows, owners: ownerRows });
+  } catch (err) {
+    console.error("Error loading bird form data:", err);
+    res.status(500).send("Error preparing new bird form");
+  }
+});
 
 router.post("/species_new", async (req, res) => {
   try {
@@ -106,6 +137,58 @@ router.post("/feeding_logs_new", async (req, res) => {
   }
 });
 
+router.post("/birds_delete/:id", async (req, res) => {
+  try {
+    const birdId = req.params.id;
+
+    const [result] = await db.execute(
+      "DELETE FROM Birds WHERE bird_id = ?",
+      [birdId]
+    );
+
+    if (result.affectedRows && result.affectedRows > 0) {
+      res.redirect("/birds");
+    } else {
+      res.status(404).send("Bird not found");
+    }
+  } catch (err) {
+    console.error("Error deleting bird:", err);
+    res.status(500).send("Error deleting bird - check for dependent records or DB constraints.");
+  }
+});
+
+router.post("/species_delete/:id", async (req, res) => {
+  const speciesId = req.params.id;
+
+  try {
+    const [birds] = await db.execute(
+      "SELECT COUNT(*) AS count FROM Birds WHERE species_id = ?",
+      [speciesId]
+    );
+
+    if (birds[0].count > 0) {
+      return res.status(400).send(
+        `Cannot delete species. ${birds[0].count} bird(s) still belong to this species.`
+      );
+    }
+
+    const [result] = await db.execute(
+      "DELETE FROM Species WHERE species_id = ?",
+      [speciesId]
+    );
+
+    if (result.affectedRows && result.affectedRows > 0) {
+      res.redirect("/species");
+    } else {
+      res.status(404).send("Species not found");
+    }
+
+  } catch (err) {
+    console.error("Error deleting species:", err);
+    res.status(500).send("Error deleting species - check for dependent records or DB constraints.");
+  }
+});
+
 router.get("/species_update/:id", async (req, res) => {
   try {
     const [rows] = await db.execute(
@@ -139,16 +222,31 @@ router.post("/species_update/:id", async (req, res) => {
 
 router.get("/birds_update/:id", async (req, res) => {
   try {
-    const [birds] = await db.execute(
-      "SELECT * FROM Birds WHERE bird_id=?",
-      [req.params.id]
-    );
-    res.render("birds_update", { bird: birds[0] });
+    const birdId = req.params.id;
+
+    const [[bird]] = await db.execute("SELECT * FROM Birds WHERE bird_id = ?", [birdId]);
+
+    if (!bird) {
+      return res.status(404).send("Bird not found");
+    }
+
+    const [species] = await db.execute("SELECT * FROM Species");
+    const [owners] = await db.execute("SELECT * FROM Owners");
+
+    if (bird.date_of_birth) {
+      bird.date_of_birth = bird.date_of_birth.toISOString().split("T")[0];
+    }
+    if (bird.admission_date) {
+      bird.admission_date = bird.admission_date.toISOString().split("T")[0];
+    }
+
+    res.render("birds_update", { bird, species, owners });
   } catch (err) {
-    console.error(err);
+    console.error("Error loading bird:", err);
     res.status(500).send("Error loading bird");
   }
 });
+
 
 router.post("/birds_update/:id", async (req, res) => {
   try {

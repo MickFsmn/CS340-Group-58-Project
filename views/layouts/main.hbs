@@ -8,9 +8,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Englebert&family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap"
         rel="stylesheet">
+    <link rel="icon" type="image/png" href="/assets/favicon.png">
+    <link rel="shortcut icon" type="image/png" href="/assets/favicon.png">
+
 </head>
 <style>
-
     header {
         background-color: #ECF39E;
         margin: 0;
@@ -18,12 +20,12 @@
         position: relative;
         top: 0;
         left: 0;
-        display:flex;
+        display: flex;
         align-items: center;
         justify-content: space-between;
         padding-left: 20px;
         padding-right: 20px;
-        
+
     }
 
     .home-table {
@@ -39,67 +41,77 @@
         font-size: 2em;
         color: #132A13;
     }
+
     .page-content {
         margin-top: 20px;
-        margin-right:20px;
-        margin-left:20px;
+        margin-right: 20px;
+        margin-left: 20px;
     }
+
     .home-link {
-        color:#132A13;
+        color: #132A13;
     }
+
     a {
-        color:#132A13;
+        color: #132A13;
+    }
+    .new-button {
+        font-optical-sizing: auto;
+        font-weight: 700;
+        font-style: normal;
+        background-color: #ECF39E;
+        padding: 10px 15px;
+        text-decoration: none;
+        border: 3px solid #132A13;
+        border-radius: 5px;
+    }
+    .new-button:hover {
+        background-color: #D4E157;
     }
 </style>
 
 <body>
-<header>
-<h1 class="logo"><a href="/" class="home-link">Home</a></h1>
+    <header>
+        <h1 class="logo"><a href="/" class="home-link">Home</a></h1>
 
-    <h1 class="logo">Happy Feathers Hospital and Rehabilitation</h1>
-</header>
+        <h1 class="logo">Happy Feathers Hospital and Rehabilitation</h1>
+    </header>
 
-<table class="home-table">
-    <tr class="home-table-row">
-        <th>View Database Entries</th>
-        <th>Add New Entries</th>
-        <th>Update Existing Entries</th>
-    </tr>
+    <table class="home-table">
+        <tr class="home-table-row">
+            <th>View Database Entries</th>
+            <th>Add New Entries</th>
+        </tr>
 
-    <tr class="home-table-row">
-        <td><a href="/birds">View Birds</a></td>
-        <td><a href="/birds_new">Add Bird</a></td>
-        <td><a href="/birds_update">Update Birds</a></td>
-    </tr>
+        <tr class="home-table-row">
+            <td><a href="/birds">View Birds</a></td>
+            <td><a href="/birds_new">Add Bird</a></td>
+        </tr>
 
-    <tr class="home-table-row">
-        <td><a href="/species">View Species</a></td>
-        <td><a href="/species_new">Add Species</a></td>
-        <td><a href="/species_update">Update Species</a></td>
-    </tr>
+        <tr class="home-table-row">
+            <td><a href="/species">View Species</a></td>
+            <td><a href="/species_new">Add Species</a></td>
+        </tr>
 
-    <tr class="home-table-row">
-        <td><a href="/owners">View Owners</a></td>
-        <td><a href="/owners_new">Add Owner</a></td>
-        <td><a href="/owners_update">Update Owners</a></td>
-    </tr>
+        <tr class="home-table-row">
+            <td><a href="/owners">View Owners</a></td>
+            <td><a href="/owners_new">Add Owner</a></td>
+        </tr>
 
-    <tr class="home-table-row">
-        <td><a href="/feeds">View Feeds</a></td>
-        <td><a href="/feeds_new">Add Feed</a></td>
-        <td><a href="/feeds_update">Update Feeds</a></td>
-    </tr>
+        <tr class="home-table-row">
+            <td><a href="/feeds">View Feeds</a></td>
+            <td><a href="/feeds_new">Add Feed</a></td>
+        </tr>
 
-    <tr class="home-table-row">
-        <td><a href="/feeding_logs">View Feeding Logs</a></td>
-        <td><a href="/feeding_logs_new">Add Feeding Log Entry</a></td>
-        <td><a href="/feeding_logs_update">Update Feeding Log Entry</a></td>
-    </tr>
-</table>
+        <tr class="home-table-row">
+            <td><a href="/feeding_logs">View Feeding Logs</a></td>
+            <td><a href="/feeding_logs_new">Add Feeding Log Entry</a></td>
+        </tr>
+    </table>
 
-<div class="page-content">
-    {{{body}}}
-</div>
+    <div class="page-content">
+        {{{body}}}
+    </div>
 
 </body>
 

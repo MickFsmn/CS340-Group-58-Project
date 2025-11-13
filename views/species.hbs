@@ -1,34 +1,79 @@
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+  td,
+  th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+  }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+  tr:nth-child(even) {
+    background-color: #d3e09a;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f1f1c1;
+  }
+
+  .delete-button {
+    all: unset; 
+    color: red;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .update-column {
+    background-color: rgb(144, 238, 144);
+    text-align:center;
+  }
+
+  .delete-column {
+    background-color: rgb(226, 172, 147);
+    text-align:center;
+  }
+
+  .SELECT-table td:nth-child(5) {
+    background-color: rgb(202, 255, 200);
+    color: black;
+  }
+
+  .SELECT-table td:nth-child(6) {
+    background-color: rgb(255, 233, 233);
+    color: rgb(255, 0, 0);
+    font-size: x-large;
+    text-align:center;
+  }
 </style>
 <h1>View Species</h1>
-<table>
-    <tr>
-        <th>species_id</th>
-        <th>common_name</th>
-        <th>scientific_name</th>
-        <th>diet_type</th>
-    </tr>
-    {{#each species}}
-    <tr>
-        <td>{{this.species_id}}</td>
-        <td>{{this.common_name}}</td>
-        <td>{{this.scientific_name}}</td>
-        <td>{{this.diet_type}}</td>
-    </tr>
-    {{/each}}
+<p><a href="/species_new" class="new-button">Add New Species</a></p>
+<table class="SELECT-table">
+  <tr>
+    <th>species_id</th>
+    <th>common_name</th>
+    <th>scientific_name</th>
+    <th>diet_type</th>
+    <th class="update-column">update</th>
+    <th class="delete-column">delete</th>
+  </tr>
+  {{#each species}}
+  <tr>
+    <td>{{this.species_id}}</td>
+    <td>{{this.common_name}}</td>
+    <td>{{this.scientific_name}}</td>
+    <td>{{this.diet_type}}</td>
+    <td><a href="/species_update/{{this.species_id}}" class="update-button">update</a></td>
+    <td>
+      <form action="/species_delete/{{this.species_id}}" method="POST"
+        onsubmit="return confirm('Delete this species? Any birds referencing it must be removed first. Proceed?');">
+        <button type="submit" class="delete-button">X</button>
+      </form>
+    </td>
+  </tr>
+  {{/each}}
 </table>

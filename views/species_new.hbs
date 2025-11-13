@@ -1,11 +1,18 @@
-<form>
-    <label for="species_id" >Species ID:</label><br>
-    <input type="text" name="species_id" placeholder="species_id"><br>
+<h1>New Species Entry</h1>
+
+<form action="/species_new" method="POST">
     <label for="common_name">Common Name:</label><br>
     <input type="text" name="common_name" placeholder="common_name"><br>
     <label for="scientific_name">Scientific Name:</label><br>
     <input type="text" name="scientific_name" placeholder="scientific_name"><br>
     <label for="diet_type">Diet Type:</label><br>
-    <input type="text" name="diet_type" placeholder="diet_type"><br><br>
+    <select id="diet_type" name="diet_type">
+      <option value="insectivore">Insectivore</option>
+      <option value="granivore">Granivore</option>
+      <option value="omnivore">Omnivore</option>
+      <option value="carnivore">Carnivore</option>
+      <option value="herbivore">Herbivore</option>
+    </select><br>
   <input type="submit" value="Submit">
 </form>
+

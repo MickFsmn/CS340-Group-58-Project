@@ -1,0 +1,53 @@
+<h1>Update Bird ID: {{bird.bird_id}}</h1>
+
+<form action="/birds_update/{{bird.bird_id}}" method="POST">
+  <label>Name:</label><br>
+  <input type="text" name="name" value="{{bird.name}}" required><br>
+
+  <label>Species ID:</label><br>
+  <select name="species_id">
+    {{#each species}}
+      <option value="{{this.species_id}}" {{#if (eq this.species_id ../bird.species_id)}}selected{{/if}}>
+        {{this.species_id}} - {{this.common_name}}
+      </option>
+    {{/each}}
+  </select><br>
+
+  <label>Owner ID:</label><br>
+  <select name="owner_id">
+    {{#each owners}}
+      <option value="{{this.owner_id}}" {{#if (eq this.owner_id ../bird.owner_id)}}selected{{/if}}>
+        {{this.owner_id}} - {{this.first_name}} {{this.last_name}}
+      </option>
+    {{/each}}
+  </select><br>
+
+  <label>Date of Birth:</label><br>
+  <input type="date" name="date_of_birth" value="{{bird.date_of_birth}}"><br>
+
+  <label>Sex:</label><br>
+  <select name="sex">
+    <option value="unknown" {{#if (eq bird.sex "unknown")}}selected{{/if}}>Unknown</option>
+    <option value="M" {{#if (eq bird.sex "M")}}selected{{/if}}>Male</option>
+    <option value="F" {{#if (eq bird.sex "F")}}selected{{/if}}>Female</option>
+  </select><br>
+
+  <label>Admission Date:</label><br>
+  <input type="date" name="admission_date" value="{{bird.admission_date}}"><br>
+
+  <label>Current Status:</label><br>
+  <select name="current_status">
+    <option value="in_treatment" {{#if (eq bird.current_status "in_treatment")}}selected{{/if}}>In Treatment</option>
+    <option value="released" {{#if (eq bird.current_status "released")}}selected{{/if}}>Released</option>
+    <option value="transferred" {{#if (eq bird.current_status "transferred")}}selected{{/if}}>Transferred</option>
+    <option value="deceased" {{#if (eq bird.current_status "deceased")}}selected{{/if}}>Deceased</option>
+  </select><br>
+
+  <label>Reason for Admission:</label><br>
+  <input type="text" name="reason_for_admission" value="{{bird.reason_for_admission}}"><br>
+
+  <label>Notes:</label><br>
+  <input type="text" name="notes" value="{{bird.notes}}"><br><br>
+
+  <input type="submit" value="Submit">
+</form>

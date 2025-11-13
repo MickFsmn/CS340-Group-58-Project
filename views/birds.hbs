@@ -1,48 +1,91 @@
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+  td,
+  th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+  }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+  tr:nth-child(even) {
+    background-color: #d3e09a;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f1f1c1;
+  }
+
+  .delete-button {
+    all: unset; 
+    color: red;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .update-column {
+    background-color: rgb(144, 238, 144);
+    text-align:center;
+  }
+
+  .delete-column {
+    background-color: rgb(226, 172, 147);
+    text-align:center;
+  }
+
+  .SELECT-table td:nth-child(11) {
+    background-color: rgb(202, 255, 200);
+    color: black;
+  }
+
+  .SELECT-table td:nth-child(12) {
+    background-color: rgb(255, 233, 233);
+    color: rgb(255, 0, 0);
+    font-size: x-large;
+    text-align:center;
+  }
 </style>
 <h1>View Birds</h1>
-<table>
-    <tr>
-        <th>bird_id</th>
-        <th>name</th>
-        <th>species_id</th>
-        <th>owner_id</th>
-        <th>date_of_birth</th>
-        <th>sex</th>
-        <th>admission_date</th>
-        <th>current_status</th>
-        <th>reason_for_admission</th>
-        <th>cage_id</th>
-        <th>notes</th>
-    </tr>
-    {{#each birds}}
-    <tr>
-        <td>{{this.bird_id}}</td>
-        <td>{{this.name}}</td>
-        <td>{{this.species_id}}</td>
-        <td>{{this.owner_id}}</td>
-        <td>{{this.date_of_birth}}</td>
-        <td>{{this.sex}}</td>
-        <td>{{this.admission_date}}</td>
-        <td>{{this.current_status}}</td>
-        <td>{{this.reason_for_admission}}</td>
-        <td>{{this.cage_id}}</td>
-        <td>{{this.notes}}</td>
-    </tr>
-    {{/each}}
+<p><a href="/birds_new" class="new-button">Add New Bird</a></p>
+<table class="SELECT-table">
+  <tr>
+    <th>bird_id</th>
+    <th>name</th>
+    <th>species_id</th>
+    <th>owner_id</th>
+    <th>date_of_birth</th>
+    <th>sex</th>
+    <th>admission_date</th>
+    <th>current_status</th>
+    <th>reason_for_admission</th>
+    <th>notes</th>
+    <th class="update-column">update</th>
+    <th class="delete-column">delete</th>
+  </tr>
+  {{#each birds}}
+  <tr>
+    <td>{{this.bird_id}}</td>
+    <td>{{this.name}}</td>
+    <td>{{this.species_id}}</td>
+    <td>{{this.owner_id}}</td>
+    <td>{{this.date_of_birth}}</td>
+    <td>{{this.sex}}</td>
+    <td>{{this.admission_date}}</td>
+    <td>{{this.current_status}}</td>
+    <td>{{this.reason_for_admission}}</td>
+    <td>{{this.notes}}</td>
+    <td><a href="/birds_update/{{this.bird_id}}" class="update-button">update</a></td>
+    <td>
+      <form action="/birds_delete/{{this.bird_id}}" method="POST"
+        onsubmit="return confirm('Delete this bird? This will also remove any associated feeding logs. Proceed?');">
+        <button type="submit" class="delete-button">X</button>
+      </form>
+    </td>
+  </tr>
+  {{/each}}
 </table>

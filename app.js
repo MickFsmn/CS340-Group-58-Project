@@ -17,15 +17,26 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, "public")));
 
 // handlebars
-app.engine("hbs", engine({ 
+app.engine("hbs", engine({
   extname: ".hbs",
-  defaultLayout: "main",         
-  layoutsDir: path.join(__dirname, "views/layouts")}));
+  helpers: {
+    eq: (a, b) => a == b
+  },
+  defaultLayout: "main",
+  layoutsDir: path.join(__dirname, "views/layouts")
+}));
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views"));
 
 // routes
 app.use("/", routes);
+app.use('/assets', express.static(path.join(__dirname, 'assets')));
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url}`);
+  next();
+});
+
 
 // start server
 app.listen(PORT, () => console.log(`Server running on http://localhost:${PORT}, or http://classwork.engr.oregonstate.edu:${PORT}`));

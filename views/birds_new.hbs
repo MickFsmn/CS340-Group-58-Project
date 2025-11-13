@@ -1,24 +1,40 @@
-<form>
-    <label for="bird_id">Bird ID:</label><br>
-    <input type="text" name="bird_id" placeholder="bird_id"><br>
-    <label for="name">Name:</label><br>
-    <input type="text" name="name" placeholder="name"><br>
-    <label for="species_id">Species ID:</label><br>
-    <input type="text" name="species_id" placeholder="species_id"><br>
-    <label for="owner_id">Owner ID:</label><br>
-    <input type="text" name="owner_id" placeholder="owner_id"><br>
-    <label for="date_of_birth">Date of Birth:</label><br>
-    <input type="date" name="date_of_birth" placeholder="date_of_birth"><br>
-    <label for="sex">Sex:</label><br>
-    <input type="text" name="sex" placeholder="sex"><br>
-    <label for="admission_date">Admission Date:</label><br>
-    <input type="date" name="admission_date" placeholder="admission_date"><br>
-    <label for="current_status">Current Status:</label><br>
-    <input type="text" name="current_status" placeholder="current_status"><br>
-    <label for="reason_for_admission">Reason for Admission:</label><br>
-    <input type="text" name="reason_for_admission" placeholder="reason_for_admission"><br>
-    <label for="notes">Notes:</label><br>
-    <input type="text" name="notes" placeholder="notes"><br><br>
-  
+<h1>New Bird Entry</h1>
+
+<form action="/birds_new" method="POST">
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" placeholder="name"><br>
+  <label for="species_id">Species ID:</label><br>
+  <select id="species_id" name="species_id">
+    {{#each species}}
+      <option value="{{this.species_id}}"> {{this.species_id}} - {{this.common_name}} </option>
+    {{/each}}
+  </select><br>
+  <label for="owner_id">Owner ID:</label><br>
+  <select id="owner_id" name="owner_id">
+    {{#each owners}}
+      <option value="{{this.owner_id}}"> {{this.owner_id}} - {{this.first_name}} {{this.last_name}} </option>
+    {{/each}}
+  </select><br>
+  <label for="date_of_birth">Date of Birth:</label><br>
+  <input type="date" name="date_of_birth" placeholder="date_of_birth"><br>
+  <label for="sex">Sex:</label><br>
+  <select id="sex" name="sex">
+    <option value="unknown"> Unknown </option>
+    <option value="M"> Male </option>
+    <option value="F"> Female </option>
+  </select><br>
+  <label for="admission_date">Admission Date:</label><br>
+  <input type="date" name="admission_date" placeholder="admission_date"><br>
+  <label for="current_status">Current Status:</label><br>
+  <select id="current_status" name="current_status">
+    <option value="in_treatment"> In Treatment </option>
+    <option value="released"> Released </option>
+    <option value="transferred"> Transferred </option>
+    <option value="deceased"> Deceased </option>
+  </select><br>
+  <label for="reason_for_admission">Reason for Admission:</label><br>
+  <input type="text" name="reason_for_admission" placeholder="reason_for_admission"><br>
+  <label for="notes">Notes:</label><br>
+  <input type="text" name="notes" placeholder="notes"><br><br>
   <input type="submit" value="Submit">
-</form> 
+</form>
