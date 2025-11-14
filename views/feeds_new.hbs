@@ -1,11 +1,14 @@
-<form>
-    <label for="feed_id">Feed ID:</label><br>
-    <input type="text" name="feed_id" placeholder="feed_id"><br>
-    <label for="name">Name:</label><br>
-    <input type="text" name="name" placeholder="name"><br>
-    <label for="type">Type:</label><br>
-    <input type="text" name="type" placeholder="type"><br>
-    <label for="notes">Notes:</label><br>
-    <input type="text" name="notes" placeholder="notes"><br><br>
-    <input type="submit" value="Submit">
+<h1>New Feed Entry</h1>
+
+<form action="/feeds_new" method="POST">
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" placeholder="name" required><br>
+
+  <label for="type">Type:</label><br>
+  <input type="text" name="type" placeholder="type" required><br>
+
+  <label for="notes">Notes:</label><br>
+  <input type="text" name="notes" placeholder="notes"><br><br>
+
+  <input type="submit" value="Submit">
 </form>
