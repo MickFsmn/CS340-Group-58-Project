@@ -1,14 +1,25 @@
-<form>
-    <label for="feeding_log_id">Feeding Log ID:</label><br>
-    <input type="text" name="feeding_id" placeholder="feeding_id"><br>
-    <label for="bird_id">Bird ID:</label><br>
-    <input type="text" name="bird_id" placeholder="bird_id"><br>
-    <label for="feed_id">Feed ID:</label><br>
-    <input type="text" name="feed_id" placeholder="feed_id"><br>
-    <label for="amount">Amount:</label><br>
-    <input type="text" name="amount" placeholder="amount"><br>
-    <label for="date_time">Date Time:</label><br>
-    <input type="datetime-local" name="date_time" placeholder="date_time"><br>
+<h1>New Feeding Log Entry</h1>
+
+<form action="/feeding_logs_new" method="POST">
+  <label for="bird_id">Bird ID:</label><br>
+  <select id="bird_id" name="bird_id">
+    {{#each birds}}
+      <option value="{{this.bird_id}}">{{this.bird_id}} - {{this.name}}</option>
+    {{/each}}
+  </select><br>
+
+  <label for="feed_id">Feed ID:</label><br>
+  <select id="feed_id" name="feed_id">
+    {{#each feeds}}
+      <option value="{{this.feed_id}}">{{this.feed_id}} - {{this.feed_name}}</option>
+    {{/each}}
+  </select><br>
+
+  <label for="amount">Amount:</label><br>
+  <input type="text" name="amount" placeholder="amount"><br>
+
+  <label for="date_time">Date & Time:</label><br>
+  <input type="datetime-local" name="date_time"><br><br>
 
   <input type="submit" value="Submit">
 </form>
