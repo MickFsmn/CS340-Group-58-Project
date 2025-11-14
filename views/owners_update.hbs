@@ -1,0 +1,17 @@
+<h1>Update Owner ID: {{owner.owner_id}}</h1>
+
+<form action="/owners_update/{{owner.owner_id}}" method="POST">
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" value="{{owner.name}}" required><br>
+
+  <label for="address">Address:</label><br>
+  <input type="text" name="address" value="{{owner.address}}"><br>
+
+  <label for="phone">Phone:</label><br>
+  <input type="text" name="phone" value="{{owner.phone}}"><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" name="email" value="{{owner.email}}"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
