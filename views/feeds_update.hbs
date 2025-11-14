@@ -1,0 +1,14 @@
+<h1>Update Feed ID: {{feed.feed_id}}</h1>
+
+<form action="/feeds_update/{{feed.feed_id}}" method="POST">
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" value="{{feed.name}}" required><br>
+
+  <label for="type">Type:</label><br>
+  <input type="text" name="type" value="{{feed.type}}" required><br>
+
+  <label for="notes">Notes:</label><br>
+  <input type="text" name="notes" value="{{feed.notes}}"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
