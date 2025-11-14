@@ -14,8 +14,30 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.delete-button {
+  all: unset;
+  color: red;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+.update-column {
+  background-color: rgb(144, 238, 144);
+  text-align:center;
+}
+
+.delete-column {
+  background-color: rgb(226, 172, 147);
+  text-align:center;
+}
 </style>
+
 <h1>View Owners</h1>
+
+<p><a href="/owners_new" class="new-button">Add New Owner</a></p>
+
 <table class="SELECT-table">
     <tr>
         <th>owner_id</th>
@@ -23,7 +45,10 @@ tr:nth-child(even) {
         <th>address</th>
         <th>phone</th>
         <th>email</th>
+        <th class="update-column">update</th>
+        <th class="delete-column">delete</th>
     </tr>
+
     {{#each owners}}
     <tr>
         <td>{{this.owner_id}}</td>
@@ -31,6 +56,15 @@ tr:nth-child(even) {
         <td>{{this.address}}</td>
         <td>{{this.phone}}</td>
         <td>{{this.email}}</td>
+
+        <td><a href="/owners_update/{{this.owner_id}}" class="update-button">update</a></td>
+
+        <td>
+          <form action="/owners_delete/{{this.owner_id}}" method="POST"
+            onsubmit="return confirm('Delete this owner? This will remove any birds associated with this owner. Proceed?');">
+            <button type="submit" class="delete-button">X</button>
+          </form>
+        </td>
     </tr>
     {{/each}}
 </table>
