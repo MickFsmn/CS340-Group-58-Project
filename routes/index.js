@@ -24,6 +24,36 @@ router.get("/species", async (req, res) => {
   }
 });
 
+router.get("/feeds", async (req, res) => {
+  try {
+    const [rows] = await db.execute("SELECT * FROM Feeds");
+    res.render("feeds", { title: "View Feeds", feeds: rows });
+  } catch (err) {
+    console.error("Error loading feeds:", err);
+    res.status(500).send("Error loading feeds");
+  }
+});
+
+router.get("/feeding_logs", async (req, res) => {
+  try {
+    const [rows] = await db.execute("SELECT * FROM Feeding_Logs");
+    res.render("feeding_logs", { title: "View Feeding Logs", feeding_logs: rows });
+  } catch (err) {
+    console.error("Error loading feeding logs:", err);
+    res.status(500).send("Error loading feeding logs");
+  }
+});
+
+router.get("/owners", async (req, res) => {
+  try {
+    const [rows] = await db.execute("SELECT * FROM Owners");
+    res.render("owners", { title: "View Owners", owners: rows });
+  } catch (err) {
+    console.error("Error loading owners:", err);
+    res.status(500).send("Error loading owners");
+  }
+});
+
 router.get("/birds_update", (req, res) => res.render("birds_update", { title: "Update Birds" }));
 router.get("/species", (req, res) => res.render("species", { title: "View Species" }));
 router.get("/species_new", (req, res) => res.render("species_new", { title: "Add Species" }));
