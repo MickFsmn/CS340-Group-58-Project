@@ -1,0 +1,30 @@
+<h1>Update Feeding Log ID: {{log.feeding_id}}</h1>
+
+<form action="/feeding_logs_update/{{log.feeding_id}}" method="POST">
+
+  <label>Bird ID:</label><br>
+  <select name="bird_id">
+    {{#each birds}}
+      <option value="{{this.bird_id}}" {{#if (eq this.bird_id ../log.bird_id)}}selected{{/if}}>
+        {{this.bird_id}} - {{this.name}}
+      </option>
+    {{/each}}
+  </select><br>
+
+  <label>Feed ID:</label><br>
+  <select name="feed_id">
+    {{#each feeds}}
+      <option value="{{this.feed_id}}" {{#if (eq this.feed_id ../log.feed_id)}}selected{{/if}}>
+        {{this.feed_id}} - {{this.feed_name}}
+      </option>
+    {{/each}}
+  </select><br>
+
+  <label>Amount:</label><br>
+  <input type="text" name="amount" value="{{log.amount}}"><br>
+
+  <label>Date & Time:</label><br>
+  <input type="datetime-local" name="date_time" value="{{log.date_time}}"><br><br>
+
+  <input type="submit" value="Submit">
+</form>
