@@ -1,20 +1,58 @@
 <style>
-table {
-  font-family: arial, sans-serif;
-  border-collapse: collapse;
-  width: 100%;
-}
+  table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+  }
 
-td, th {
-  border: 1px solid #dddddd;
-  text-align: left;
-  padding: 8px;
-}
+  td,
+  th {
+    border: 1px solid #000000;
+    text-align: left;
+    padding: 8px;
+  }
 
-tr:nth-child(even) {
-  background-color: #dddddd;
-}
+  tr:nth-child(even) {
+    background-color: #d3e09a;
+  }
+
+  tr:nth-child(odd) {
+    background-color: #f1f1c1;
+  }
+
+  .delete-button {
+    all: unset;
+    color: red;
+    cursor: pointer;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .update-column {
+    background-color: rgb(144, 238, 144);
+    text-align: center;
+  }
+
+  .delete-column {
+    background-color: rgb(226, 172, 147);
+    text-align: center;
+  }
+
+  .SELECT-table td:nth-child(6) {
+    background-color: rgb(202, 255, 200);
+    color: black;
+    text-align: center;
+  }
+
+  .SELECT-table td:nth-child(7) {
+    background-color: rgb(255, 233, 233);
+    color: rgb(255, 0, 0);
+    font-size: x-large;
+    text-align: center;
+  }
 </style>
+
+<p><a href="/feeding_logs_new" class="new-button">Add New Feeding Log</a></p>
 
 <h1>View Feeding Logs</h1>
 
@@ -25,8 +63,8 @@ tr:nth-child(even) {
         <th>feed_id</th>
         <th>amount</th>
         <th>date_time</th>
-        <th>Update</th>
-        <th>Delete</th>
+        <th class="update-column">update</th>
+        <th class="delete-column">delete</th>
     </tr>
 
     {{#each feeding_logs}}

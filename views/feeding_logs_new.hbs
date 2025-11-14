@@ -4,22 +4,22 @@
   <label for="bird_id">Bird ID:</label><br>
   <select id="bird_id" name="bird_id">
     {{#each birds}}
-      <option value="{{this.bird_id}}">{{this.bird_id}} - {{this.name}}</option>
+      <option value="{{this.bird_id}}"> {{this.bird_id}} - {{this.name}} </option>
     {{/each}}
   </select><br>
 
   <label for="feed_id">Feed ID:</label><br>
   <select id="feed_id" name="feed_id">
     {{#each feeds}}
-      <option value="{{this.feed_id}}">{{this.feed_id}} - {{this.feed_name}}</option>
+      <option value="{{this.feed_id}}">{{this.feed_id}} - {{this.name}}</option>
     {{/each}}
   </select><br>
 
   <label for="amount">Amount:</label><br>
   <input type="text" name="amount" placeholder="amount"><br>
 
-  <label for="date_time">Date & Time:</label><br>
-  <input type="datetime-local" name="date_time"><br><br>
+  <label for="date_time">Date:</label><br>
+  <input type="datetime-local" name="date_time" placeholder="date_time"><br><br>
 
   <input type="submit" value="Submit">
 </form>

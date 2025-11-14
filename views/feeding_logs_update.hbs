@@ -15,7 +15,7 @@
   <select name="feed_id">
     {{#each feeds}}
       <option value="{{this.feed_id}}" {{#if (eq this.feed_id ../log.feed_id)}}selected{{/if}}>
-        {{this.feed_id}} - {{this.feed_name}}
+        {{this.feed_id}} - {{this.name}}
       </option>
     {{/each}}
   </select><br>
@@ -23,7 +23,7 @@
   <label>Amount:</label><br>
   <input type="text" name="amount" value="{{log.amount}}"><br>
 
-  <label>Date & Time:</label><br>
+  <label>Date:</label><br>
   <input type="datetime-local" name="date_time" value="{{log.date_time}}"><br><br>
 
   <input type="submit" value="Submit">
