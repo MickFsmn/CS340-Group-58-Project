@@ -15,7 +15,9 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 </style>
+
 <h1>View Feeding Logs</h1>
+
 <table class="SELECT-table">
     <tr>
         <th>feeding_id</th>
@@ -23,7 +25,10 @@ tr:nth-child(even) {
         <th>feed_id</th>
         <th>amount</th>
         <th>date_time</th>
+        <th>Update</th>
+        <th>Delete</th>
     </tr>
+
     {{#each feeding_logs}}
     <tr>
         <td>{{this.feeding_id}}</td>
@@ -31,6 +36,18 @@ tr:nth-child(even) {
         <td>{{this.feed_id}}</td>
         <td>{{this.amount}}</td>
         <td>{{this.date_time}}</td>
+        <td>
+            <form action="/feeding_logs_update" method="GET">
+                <input type="hidden" name="feeding_id" value="{{this.feeding_id}}">
+                <input type="submit" value="Update">
+            </form>
+        </td>
+        <td>
+            <form action="/feeding_logs_delete" method="POST">
+                <input type="hidden" name="feeding_id" value="{{this.feeding_id}}">
+                <input type="submit" value="Delete">
+            </form>
+        </td>
     </tr>
     {{/each}}
 </table>
