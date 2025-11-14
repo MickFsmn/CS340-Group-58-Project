@@ -14,21 +14,55 @@ td, th {
 tr:nth-child(even) {
   background-color: #dddddd;
 }
+
+.delete-button {
+  all: unset;
+  color: red;
+  cursor: pointer;
+  text-align: center;
+  font-weight: bold;
+}
+
+.update-column {
+  background-color: rgb(144, 238, 144);
+  text-align:center;
+}
+
+.delete-column {
+  background-color: rgb(226, 172, 147);
+  text-align:center;
+}
 </style>
+
 <h1>View Feeds</h1>
+
+<p><a href="/feeds_new" class="new-button">Add New Feed</a></p>
+
 <table class="SELECT-table">
     <tr>
         <th>feed_id</th>
         <th>name</th>
         <th>type</th>
         <th>notes</th>
+        <th class="update-column">update</th>
+        <th class="delete-column">delete</th>
     </tr>
+
     {{#each feeds}}
     <tr>
         <td>{{this.feed_id}}</td>
         <td>{{this.name}}</td>
         <td>{{this.type}}</td>
         <td>{{this.notes}}</td>
+
+        <td><a href="/feeds_update/{{this.feed_id}}">update</a></td>
+
+        <td>
+            <form action="/feeds_delete/{{this.feed_id}}" method="POST"
+                  onsubmit="return confirm('Delete this feed? This may affect related feeding logs. Proceed?');">
+                <button type="submit" class="delete-button">X</button>
+            </form>
+        </td>
     </tr>
     {{/each}}
 </table>
