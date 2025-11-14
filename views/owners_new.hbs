@@ -1,13 +1,17 @@
-<form>
-    <label for="owner_id">Owner ID:</label><br>
-    <input type="text" name="owner_id" placeholder="owner_id"><br>
-    <label for="name">Name:</label><br>
-    <input type="text" name="name" placeholder="name"><br>
-    <label for="address">Address:</label><br>
-    <input type="text" name="address" placeholder="address"><br>
-    <label for="phone">Phone:</label><br>
-    <input type="text" name="phone" placeholder="phone"><br>
-    <label for="email">Email:</label><br>
-    <input type="text" name="email" placeholder="email"><br><br>
+<h1>New Owner Entry</h1>
+
+<form action="/owners_new" method="POST">
+  <label for="name">Name:</label><br>
+  <input type="text" name="name" placeholder="name" required><br>
+
+  <label for="address">Address:</label><br>
+  <input type="text" name="address" placeholder="address"><br>
+
+  <label for="phone">Phone:</label><br>
+  <input type="text" name="phone" placeholder="phone"><br>
+
+  <label for="email">Email:</label><br>
+  <input type="email" name="email" placeholder="email"><br><br>
+
   <input type="submit" value="Submit">
 </form>
