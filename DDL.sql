@@ -5,7 +5,7 @@ Project Step 4 Draft
 (re)load Database 
 */
 
-
+USE cs340_swanskel;
 DROP PROCEDURE IF EXISTS sp_reset_hfh;
 
 DELIMITER //
