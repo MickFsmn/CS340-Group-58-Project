@@ -525,9 +525,16 @@ router.post("/species_update/:id", async (req, res) => {
 router.post("/reset", async (req, res) => {
   try {
     await db.query("CALL sp_reset_hfh()");
-    res.send("Database has been reset to its initial state.");
+    res.send(`
+      <html>
+        <body>
+          <p>Database has been reset. Redirecting...</p>
+          <meta http-equiv="refresh" content="1;url=/" />
+        </body>
+      </html>
+    `);
   } catch (err) {
-    console.error("Error resetting database:", err);
+    console.error(err);
     res.status(500).send("Error resetting database");
   }
 });
