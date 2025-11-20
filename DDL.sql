@@ -15,7 +15,7 @@ BEGIN
     SET AUTOCOMMIT = 0;
 
     -- Drop tables
-    DROP TABLE IF EXISTS Feeding_Logs;
+    DROP TABLE IF EXISTS Feeding_logs;
     DROP TABLE IF EXISTS Birds;
     DROP TABLE IF EXISTS Owners;
     DROP TABLE IF EXISTS Feeds;
