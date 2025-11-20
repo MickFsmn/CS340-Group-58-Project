@@ -521,6 +521,17 @@ router.post("/species_update/:id", async (req, res) => {
   }
 });
 
+/* ----- RESET PROCEDURE ------*/
+router.post("/reset", async (req, res) => {
+  try {
+    await db.query("CALL sp_reset_hfh()");
+    res.send("Database has been reset to its initial state.");
+  } catch (err) {
+    console.error("Error resetting database:", err);
+    res.status(500).send("Error resetting database");
+  }
+});
+
 /* ----- Additional GET routes for rendering pages without data / leftovers from old versions ----- */
 router.get("/birds_update", (req, res) => res.render("birds_update", { title: "Update Birds" }));
 router.get("/species", (req, res) => res.render("species", { title: "View Species" }));

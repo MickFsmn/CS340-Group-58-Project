@@ -1,14 +1,61 @@
-<h1>Welcome to Happy Feathers Hospital and Rehabilitation's (HFHR) official Patient Records Database Website! Above listed are our pages to interact with our database.</h1>
-<h2>Our page is currently under construction, so while we lack functionality, heres an overview of what each page will have to offer soon!</h2>
+<style>
+    .reset-caution {
+        padding: 20px;
+        background: #fff;
+        border: 6px solid transparent;
+        border-image: repeating-linear-gradient(45deg,
+                yellow 0,
+                yellow 10px,
+                black 10px,
+                black 20px) 10;
+        border-image-slice: 1;
+        align-content: center;
+        text-align: center;
+        border-radius: 8px;
+        max-width: 500px;
+        margin: 20px auto;
+    }
+
+    .reset-caution h2 {
+        margin-top: 0;
+    }
+
+    .reset-caution button {
+        background-color: red;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+    }
+</style>
+
+
+
+<h1>Welcome to Happy Feathers Hospital and Rehabilitation's (HFHR) official Patient Records Database Website! Above
+    listed are our pages to interact with our database. Bellow you'll find descriptions of each page, and a button to reset the database!</h1>
 <ul>
-    <li><strong>View Birds:</strong> View all bird patients currently admitted to HFHR. Updating and Deleting is in here.</li>
+    <li><strong>View Birds:</strong> View all bird patients currently admitted to HFHR. Updating and Deleting is in
+        here.</li>
     <li><strong>Add Bird:</strong> Add a new bird patient to the HFHR database.</li>
     <li><strong>View Species:</strong> View all bird species recognized by HFHR. Updating and Deleting is in here.</li>
     <li><strong>Add Species:</strong> Add a new bird species to the HFHR database.</li>
     <li><strong>View Owners:</strong> View all registered bird owners. Updating and Deleting is in here.</li>
     <li><strong>Add Owner:</strong> Add a new bird owner to the HFHR database.</li>
-    <li><strong>View Feeds:</strong> View all types of bird feeds available at HFHR. Updating and Deleting is in here.</li>
+    <li><strong>View Feeds:</strong> View all types of bird feeds available at HFHR. Updating and Deleting is in here.
+    </li>
     <li><strong>Add Feed:</strong> Add a new type of bird feed to the HFHR database.</li>
-    <li><strong>View Feeding Logs:</strong> View all feeding log entries for bird patients. Updating and Deleting is in here.</li>
+    <li><strong>View Feeding Logs:</strong> View all feeding log entries for bird patients. Updating and Deleting is in
+        here.</li>
     <li><strong>Add Feeding Log Entry:</strong> Add a new feeding log entry for a bird patient.</li>
 </ul>
+
+<div class="reset-caution">
+    <h2>Reset Database</h2>
+    <p>If you wish to reset the database to its initial state, you can do so by clicking the button below. This will
+        call a stored procedure that resets all data. (Careful! this can't be undone)</p>
+    <form action="/reset" method="POST">
+        <button type="submit">Reset Database</button>
+    </form>
+</div>
